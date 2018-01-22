@@ -21,7 +21,7 @@ public class Lines extends JFrame{
 		this.r=(int)r;
 		
 		 Drawing(Width, Height);
-		System.out.println("Lines Generated !!");
+	//	System.out.println("Lines Generated !!");
 
 	}
 
@@ -30,7 +30,7 @@ public class Lines extends JFrame{
 		setVisible(true);
 	}
 
-	//@Override
+	@Override
 	public void paint(Graphics g) {
 		
 		//plot coordinate line
@@ -47,8 +47,13 @@ public class Lines extends JFrame{
 //		}
 		//g.drawOval(x, y, width, height);
 		for (int i=0; i<xval.length-1;i++){
+
 			g.setColor(new Color(0,100,0));
 			g.drawLine(xval[i], yval[i], xval[i+1], yval[i+1]);
+			//System.out.println(xval[i]);
+			//System.out.println(xval[i+1]);
+			//System.out.println(yval[i]);
+			//System.out.println(yval[i+1]);
 		}
 			g.drawLine(xval[xval.length-1], yval[yval.length-1], xval[0], yval[0]);
 			g.drawOval(x-r, y-r, r*2, r*2);

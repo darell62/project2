@@ -11,9 +11,9 @@ public class Randpt extends Gen_Main{
 		Xpos = ran.nextInt(Width-40)+20;
 		Ypos = ran.nextInt(Height-40)+20;
 	
-		System.out.println(Xpos);
-		System.out.println(Ypos);
-	System.out.println("Random number ready !!");
+//		System.out.println(Xpos);
+//		System.out.println(Ypos);
+//	System.out.println("Random number ready !!");
 	    return new PointFormat (Xpos, Ypos);
 	}
 }
