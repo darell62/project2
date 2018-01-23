@@ -43,19 +43,27 @@ public class CircumCenter extends Gen_Main {
 
 	
 	//fix X[0],Y[0]
-
+	int count =0;
+	int countloop=0;
+	while (count < ptarray.length-3){
+		countloop = countloop + 1;
+		if (countloop == 100){
+		System.out.println("infinte loop");
+		System.out.println("X : " + X[0] + "      Y : " + Y[0]);
+			break;
+		}
 	for (int i = 3 ;i<ptarray.length; i++){
 		//construct a circle
 		x = (((X[2]*X[2]-X[1]*X[1])/2 +(Y[2]*Y[2]-Y[1]*Y[1])/2)/(Y[2]-Y[1]) - ((X[0]*X[0]-X[1]*X[1])/2 +(Y[0]*Y[0]-Y[1]*Y[1])/2)/(Y[0]-Y[1])) / ((X[1]-X[0])/(Y[0]-Y[1]) - (X[1]-X[2])/(Y[2]-Y[1]));
 		y = (x*(X[1]-X[0]) + (X[0]*X[0]-X[1]*X[1])/2 +(Y[0]*Y[0]-Y[1]*Y[1])/2) / (Y[0]-Y[1]);
 		r = Math.sqrt((x-X[0])*(x-X[0]) + (y-Y[0])*(y-Y[0]));
-		for (int ptcheck = 0; ptcheck<ptarray.length; ptcheck ++){
-			if(Math.sqrt((Nx-x)*(Nx-x)+(Ny-y)*(Ny-y)) < r){
-				!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			}
-		}
 		Nx=ptarray[i].getXpos();
 		Ny=ptarray[i].getYpos();
+
+			if(Math.sqrt((Nx-x)*(Nx-x)+(Ny-y)*(Ny-y)) > r){
+				count=count+1;
+			}
+
 	if (Math.sqrt((Nx-x)*(Nx-x)+(Ny-y)*(Ny-y)) < r){
 		//calculate the length of 2 triangle
 		a1 = Math.sqrt((X[0]-X[1])*(X[0]-X[1])+(Y[0]-Y[1])*(Y[0]-Y[1]));
@@ -71,21 +79,23 @@ public class CircumCenter extends Gen_Main {
 			//swap point
 			X[2]=Nx;
 			Y[2]=Ny;
-		//	System.out.println("2 change to " + i);
+			count =0;
+			//System.out.println("2 change to " + i);
 			}
 			}
 		else{
 			if (Nx != X[2] && Ny != Y[2]) {
 			X[1]=Nx;
 			Y[1]=Ny;
-		//	System.out.println("1 change to " + i);
+			count = 0;
+			//System.out.println("1 change to " + i);
 			}
 		}
 
 }
 }
 //System.out.println("******************************");
-
+	}
 //	XY.setXpos(X[0]);
 //	XY.setYpos(Y[0]);
 //	System.out.println(XY.getXpos() + "     " + XY.getYpos());
@@ -120,10 +130,10 @@ public class CircumCenter extends Gen_Main {
 	        return SmallTriCood;
 	    }
 	
-    public double getX() {
+    public double getXp() {
         return x;
     }
-    public double getY() {
+    public double getYp() {
         return y;
     }
     public double getR() {

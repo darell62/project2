@@ -5,19 +5,19 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-public class Shape extends JFrame{
-	public final static int Numofpts = 50;
-	public int Width=0;
-	public int Height=0;
+public class Shape extends Gen_Main{
 	public int[] xval = new int[Numofpts];
 	public int[] yval = new int[Numofpts];
 	public PointFormat[] ptarray = new PointFormat[Numofpts];
 	public PointFormat[][] XYcoodSet = new PointFormat[Numofpts-2][3];
+	public PointFormat[] incen = new PointFormat[Numofpts-2];
+	public PointFormat[] schptorder = new PointFormat[11];
 	public int[] Cx,Cy,Cr = new int[8];
 	
-	public void draw(PointFormat[] ptarray,PointFormat[][] XYcoodSet,int[] CircleX,int[] CircleY,int[] CircleR,int Width,int Height) {
+	public void draw(PointFormat[] ptarray,PointFormat[][] XYcoodSet,PointFormat[] incen, PointFormat[] schptorder, int[] CircleX,int[] CircleY,int[] CircleR) {
 		//point init
-		this.ptarray=ptarray;
+		this.ptarray = ptarray;
+		this.incen = incen;
 		for (int i=0;i<ptarray.length;i++){
 			 xval[i] = (int)(ptarray[i].getXpos());
 			 yval[i] = (int)(ptarray[i].getYpos());
@@ -31,9 +31,6 @@ public class Shape extends JFrame{
 		this.Cy=CircleY;
 		this.Cr=CircleR;
 
-		// Width,Height init
-		this.Height=Height;
-		this.Width=Width;
 		
 		 Drawing(Width, Height);
 	}
@@ -60,14 +57,27 @@ public class Shape extends JFrame{
 		//points
 		g.setColor(new Color(255,0,0));
 		for (int i=0; i<ptarray.length; i++){
-		g.fillOval(xval[i]-2, yval[i]-2, 4, 4);
+		g.fillOval(xval[i]-4, yval[i]-4, 8, 8);
 		}
 		
-		//circle
-		g.setColor(new Color(0,255,0));
-		for (int i=0; i<Cx.length;i++){
-		g.drawOval(Cx[i]-Cr[i], Cy[i]-Cr[i], Cr[i]*2, Cr[i]*2);
+//		//circle
+//		g.setColor(new Color(0,255,0));
+//		for (int i=0; i<Cx.length;i++){
+//		g.drawOval(Cx[i]-Cr[i], Cy[i]-Cr[i], Cr[i]*2, Cr[i]*2);
+//		}
+		
+		//incenter of the cell
+		g.setColor(new Color(0,0,255));
+		for (int i=0; i<incen.length;i++){
+		g.drawOval((int)(incen[i].getXpos()-4), (int)(incen[i].getYpos()-4), 8, 8);
 		}
+		
+		// line for searching
+		g.setColor(new Color(0,120,120));
+		for (int i=0; i<9;i++){
+		g.drawLine((int)(schptorder[i].getXpos()), (int)(schptorder[i].getYpos()), (int)(schptorder[i+1].getXpos()), (int)(schptorder[i+1].getYpos()));
+		}
+		
 		
 		//line
 		g.setColor(new Color(0,0,0));

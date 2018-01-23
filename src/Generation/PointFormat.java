@@ -27,7 +27,4 @@ final class PointFormat extends Randpt{
 			Ypos = ypos;
 		}
 
-
-
-
 	}

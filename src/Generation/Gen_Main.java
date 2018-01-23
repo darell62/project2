@@ -1,11 +1,16 @@
 package Generation;
 
+import java.util.ArrayList;
 
-public abstract class Gen_Main {
+import javax.swing.JFrame;
+
+public abstract class Gen_Main extends JFrame {
 	
 	public final static int Width = 1200;
 	public final static int Height = 800;
-	public final static int Numofpts = 50;
+	public final static int Numofpts = 100;
+	public final static int Decisionthreshold = 500;
+	public final static int Numofsearchsteps = 10;
 
 	public static void main(String[] args) {
 //
@@ -13,6 +18,7 @@ public abstract class Gen_Main {
 		double x =0,y=0 ,r=0;
 		PointFormat[] ptarray = new PointFormat[Numofpts];
 		PointFormat[][] XYcoodSet =new PointFormat[Numofpts-2][3];
+		PointFormat[] incen = new PointFormat[Numofpts-2];
 		double[] CircleX = new double[Numofpts-2];
 		double[] CircleY = new double[Numofpts-2];
 		double[] CircleR = new double[Numofpts-2];
@@ -38,6 +44,7 @@ public abstract class Gen_Main {
 		
 	System.out.println("Start Calculate Process");
 	for (int startpt = 0; startpt < ptarray.length-2; startpt++) {
+		System.out.println(startpt);
 //
 // Calculate Circumcenter
 		CircumCenter center = new CircumCenter(ptarray,  x,  y,  r, startpt);
@@ -46,21 +53,33 @@ public abstract class Gen_Main {
 //		for (int i=0; i<SmallTriCood.length;i++){
 //			System.out.println(SmallTriCood[i].getXpos() + "    " + SmallTriCood[i].getYpos());
 //		}
-		x = center.getX();
-		y = center.getY();
-		r = center.getR();
+		
 		XYcoodSet[startpt] = SmallTriCood;
-		CircleX[startpt] = x;
-		CircleY[startpt] = y;
-		CircleR[startpt] = r;
+		CircleX[startpt] = center.getXp();
+		CircleY[startpt] = center.getYp();
+		CircleR[startpt] = center.getR();
+		
+		InCenter incenter = new InCenter();
+		incen[startpt]=incenter.find(SmallTriCood);
 //
 // Draw lines
 //		Lines lines = new Lines();
 //		lines.draw(SmallTriCood, Width, Height , x, y, r);
 		
 	}
+//
+//  Search
+	System.out.println("Start Searching Process");
+	Search sch = new Search();
+	PointFormat[] schptorder = sch.search(incen);
+	
 	
 	System.out.println("Start Drawing Process");
+	System.out.println("the length of schptorder : " + schptorder.length);
+	for (int l =0; l < Numofsearchsteps; l++){
+		System.out.println(schptorder[l].getXpos() + "          " + schptorder[l].getYpos());
+	}
+	
 //
 // Combine Draw
 	for (int i=0; i<Numofpts-2;i++ ){
@@ -70,10 +89,12 @@ public abstract class Gen_Main {
 	}
 
 		Shape shapes = new Shape();
-		shapes.draw(ptarray,XYcoodSet,CircleX1,CircleY1,CircleR1, Width, Height);
+		shapes.draw(ptarray,XYcoodSet,incen,schptorder,CircleX1,CircleY1,CircleR1);
+
 
 		
-		System.out.println("Finish Process");
+		
+	System.out.println("Finish Process");
 //
 // For Debug
 //		for (int i=0; i< ptarray.length; i++){
@@ -93,5 +114,8 @@ public abstract class Gen_Main {
 //		for (Gen_Main i : Gen_All) {
 //			i.draw();
 //		}
+		
+		
+		
 	}
 }
