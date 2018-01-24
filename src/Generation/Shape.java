@@ -11,7 +11,7 @@ public class Shape extends Gen_Main{
 	public PointFormat[] ptarray = new PointFormat[Numofpts];
 	public PointFormat[][] XYcoodSet = new PointFormat[Numofpts-2][3];
 	public PointFormat[] incen = new PointFormat[Numofpts-2];
-	public PointFormat[] schptorder = new PointFormat[11];
+	public PointFormat[] schptorder = new PointFormat[MaxNumofsearchsteps];
 	public int[] Cx,Cy,Cr = new int[8];
 	
 	public void draw(PointFormat[] ptarray,PointFormat[][] XYcoodSet,PointFormat[] incen, PointFormat[] schptorder, int[] CircleX,int[] CircleY,int[] CircleR) {
@@ -31,6 +31,7 @@ public class Shape extends Gen_Main{
 		this.Cy=CircleY;
 		this.Cr=CircleR;
 
+		this.schptorder=schptorder;
 		
 		 Drawing(Width, Height);
 	}
@@ -73,8 +74,8 @@ public class Shape extends Gen_Main{
 		}
 		
 		// line for searching
-		g.setColor(new Color(0,120,120));
-		for (int i=0; i<9;i++){
+		g.setColor(new Color(0,255,255));
+		for (int i=0; i<MaxNumofsearchsteps-1;i++){
 		g.drawLine((int)(schptorder[i].getXpos()), (int)(schptorder[i].getYpos()), (int)(schptorder[i+1].getXpos()), (int)(schptorder[i+1].getYpos()));
 		}
 		

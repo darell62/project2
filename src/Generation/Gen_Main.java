@@ -9,8 +9,8 @@ public abstract class Gen_Main extends JFrame {
 	public final static int Width = 1200;
 	public final static int Height = 800;
 	public final static int Numofpts = 100;
-	public final static int Decisionthreshold = 500;
-	public final static int Numofsearchsteps = 10;
+	public final static int Decisionthreshold = 100;
+	public final static int MaxNumofsearchsteps = 50;
 
 	public static void main(String[] args) {
 //
@@ -44,7 +44,7 @@ public abstract class Gen_Main extends JFrame {
 		
 	System.out.println("Start Calculate Process");
 	for (int startpt = 0; startpt < ptarray.length-2; startpt++) {
-		System.out.println(startpt);
+		//System.out.println(startpt);
 //
 // Calculate Circumcenter
 		CircumCenter center = new CircumCenter(ptarray,  x,  y,  r, startpt);
@@ -75,8 +75,9 @@ public abstract class Gen_Main extends JFrame {
 	
 	
 	System.out.println("Start Drawing Process");
-	System.out.println("the length of schptorder : " + schptorder.length);
-	for (int l =0; l < Numofsearchsteps; l++){
+	//System.out.println("the length of schptorder : " + schptorder.length);
+	for (int l =0; l < MaxNumofsearchsteps; l++){
+		System.out.println("index of point : " + l);
 		System.out.println(schptorder[l].getXpos() + "          " + schptorder[l].getYpos());
 	}
 	
