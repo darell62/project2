@@ -2,6 +2,8 @@ package Generation;
 
 import java.util.Random;
 
+import Formatting.PointFormat;
+
 public class Randpt extends Gen_Main {
 	public PointFormat prepare() {
 		Random ran = new Random();

@@ -1,4 +1,6 @@
-package Generation;
+package Calculation;
+
+import Formatting.PointFormat;
 
 public class InCenter {
 			

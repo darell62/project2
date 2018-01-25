@@ -1,9 +1,13 @@
-package Generation;
+package Display;
+
 
 import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JFrame;
+
+import Formatting.PointFormat;
+import Generation.Gen_Main;
 
 public class Shape extends Gen_Main{
 	public int[] xval = new int[Numofpts];
@@ -79,10 +83,9 @@ public class Shape extends Gen_Main{
 		g.drawLine((int)(schptorder[i].getXpos()), (int)(schptorder[i].getYpos()), (int)(schptorder[i+1].getXpos()), (int)(schptorder[i+1].getYpos()));
 		}
 		
-		//line start end
-		g.setColor(new Color(0,255,0));
-		g.drawLine(0, 0, Width, Height);
-		
+//		//line start end
+//		g.setColor(new Color(0,255,0));
+//		g.drawLine(0, 0, Width, Height);
 		
 		
 		//line

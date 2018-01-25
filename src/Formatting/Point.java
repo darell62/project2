@@ -1,4 +1,5 @@
-package Generation;
+package Formatting;
+
 public class Point implements Comparable<Point> {
     private double pointnumber;
     private PointFormat pointcood;

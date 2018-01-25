@@ -4,13 +4,19 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import Calculation.CircumCenter;
+import Calculation.InCenter;
+import Display.Shape;
+import Formatting.PointFormat;
+import Searching.Search;
+
 public abstract class Gen_Main extends JFrame {
 	
 	public final static int Width = 1200;
 	public final static int Height = 800;
 	public final static int Numofpts = 100;
 	public final static int Decisionthreshold = 100;
-	public final static int MaxNumofsearchsteps = 50;
+	public final static int MaxNumofsearchsteps = 98;
 
 	public static void main(String[] args) {
 //

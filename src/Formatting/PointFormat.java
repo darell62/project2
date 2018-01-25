@@ -1,6 +1,6 @@
-package Generation;
+package Formatting;
 
-final class PointFormat implements Comparable<PointFormat>{
+public final class PointFormat implements Comparable<PointFormat>{
 
 	 	private double Xpos;
 	    private double Ypos;

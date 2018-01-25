@@ -1,9 +1,11 @@
-package Generation;
+package Display;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JFrame;
+
+import Formatting.PointFormat;
 
 public class Lines extends JFrame{
 

@@ -1,4 +1,7 @@
-package Generation;
+package Calculation;
+
+import Formatting.PointFormat;
+import Generation.Gen_Main;
 
 public class CircumCenter extends Gen_Main {
 	
