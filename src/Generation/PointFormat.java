@@ -1,6 +1,6 @@
 package Generation;
 
-final class PointFormat extends Randpt{
+final class PointFormat implements Comparable<PointFormat>{
 
 	 	private double Xpos;
 	    private double Ypos;
@@ -25,6 +25,12 @@ final class PointFormat extends Randpt{
 
 		public void setYpos(double ypos) {
 			Ypos = ypos;
+		}
+
+		@Override
+		public int compareTo(PointFormat o) {
+			// TODO Auto-generated method stub
+			return 0;
 		}
 
 	}

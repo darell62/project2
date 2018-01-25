@@ -75,9 +75,14 @@ public class Shape extends Gen_Main{
 		
 		// line for searching
 		g.setColor(new Color(0,255,255));
-		for (int i=0; i<MaxNumofsearchsteps-1;i++){
+		for (int i=0; i<MaxNumofsearchsteps+1;i++){
 		g.drawLine((int)(schptorder[i].getXpos()), (int)(schptorder[i].getYpos()), (int)(schptorder[i+1].getXpos()), (int)(schptorder[i+1].getYpos()));
 		}
+		
+		//line start end
+		g.setColor(new Color(0,255,0));
+		g.drawLine(0, 0, Width, Height);
+		
 		
 		
 		//line
