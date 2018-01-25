@@ -1,9 +1,9 @@
 package Calculation;
 
 import Formatting.PointFormat;
-import Generation.Gen_Main;
+import Generation.Main;
 
-public class CircumCenter extends Gen_Main {
+public class CircumCenter extends Main {
 	
 	double x,y,r;
 	PointFormat[] SmallTriCood = new PointFormat[3];

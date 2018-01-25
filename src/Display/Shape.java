@@ -7,9 +7,9 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 
 import Formatting.PointFormat;
-import Generation.Gen_Main;
+import Generation.Main;
 
-public class Shape extends Gen_Main{
+public class Shape extends Main{
 	public int[] xval = new int[Numofpts];
 	public int[] yval = new int[Numofpts];
 	public PointFormat[] ptarray = new PointFormat[Numofpts];

@@ -8,9 +8,9 @@ import java.util.Random;
 import Calculation.distance;
 import Formatting.Point;
 import Formatting.PointFormat;
-import Generation.Gen_Main;
+import Generation.Main;
 
-public class Search extends Gen_Main {
+public class Search extends Main {
 
 	public PointFormat[] search(PointFormat[] incen) {
 		PointFormat[] schptorder = new PointFormat[MaxNumofsearchsteps + 2]; // Arraylist

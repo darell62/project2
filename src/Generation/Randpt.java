@@ -4,7 +4,7 @@ import java.util.Random;
 
 import Formatting.PointFormat;
 
-public class Randpt extends Gen_Main {
+public class Randpt extends Main {
 	public PointFormat prepare() {
 		Random ran = new Random();
 		double Xpos = 0;
